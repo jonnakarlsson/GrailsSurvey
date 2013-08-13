@@ -7,6 +7,7 @@
 /.settings
 /*.launch
 /*.tmproj
+
 /ivy*
 /eclipse
 /.idea
@@ -41,4 +42,9 @@
 
 # other
 *.iws
+
+# files that may contain sensitive information 
+/grails-app/conf/Config.groovy
+/grails-app/conf/DataSource.groovy
+
 
