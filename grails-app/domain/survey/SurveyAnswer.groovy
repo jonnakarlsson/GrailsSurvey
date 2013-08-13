@@ -7,25 +7,24 @@ class SurveyAnswer {
 
 	long transactionId          //id som är detsamma för alla svar ifrån ett formulär.
 	Date answerDate              //datumet då svaret skapades av gästen
-	String theAnswerItself      //svaret
+	String answerValue      //svaret
 	SurveyQuestion question     //frågan som svaret tillhör
 	String contact 				//kontaktpersonen 
 
 	static constraints = {
 		//answerDate(min: DateFormat.parse("yyyyMMdd", "2013-01-01"), max: DateFormat.parse("yyyyMMdd", "2112-12-31"))
-		theAnswerItself (maxSize:1000)
+		answerValue (maxSize:1000)
 	}
 
 	static transients = ["answer"] 
 	
 	static mapping = { sort "answerDate" }
-
-	//?? nedan 
-	Object getAnswer(){
-		return question.parseAnswer(theAnswerItself)
+	 
+	transient Object getAnswer(){
+		return question.parseAnswer(answerValue)
 	}
 
 	String toString() {
-		return "$question  Svar:  $theAnswerItself"
+		return "$question  Svar:  $answerValue"
 	}
 }

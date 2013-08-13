@@ -31,7 +31,7 @@ class SurveyController {
     }
 	def createAnswer(){
 		if (request.post){
-			println params;
+			
 			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 			
@@ -42,12 +42,11 @@ class SurveyController {
 			params.findAll{it.key.startsWith('question')}.each{
 				key, value ->
 				def question = SurveyQuestion.get(key[8..-1])
-				def answer = new SurveyAnswer(transactionId: transactionId, answerDate: answerDate, theAnswerItself: value, question: question, contact: contact)
-				answer.save(failOnError: true)
+				def answer = new SurveyAnswer(transactionId: transactionId, answerDate: answerDate, answerValue: value, question: question, contact: contact)
+				answer.save(failOnError: true)							
 				
-				println ("$question + $answer")
-				
-			}
+				println params;
+			}			
 			redirect action: "index" 			
 		}
 		

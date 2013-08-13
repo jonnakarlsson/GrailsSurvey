@@ -15,13 +15,7 @@
 	</h1>	
 
 		<g:form action = "createAnswer">
-		
-		<h2>Kontaktuppgifter</h2>
-		<p>
-			<textarea name="contact" rows="5" cols="50"
-				placeholder="Gästens kontaktuppgifter"></textarea>
-		</p>
-		
+				
 		<h2>Svarsdatum</h2>
 
 		<p>
@@ -55,10 +49,7 @@
 					</tr>
 				</g:each>
 			</tbody>
-		</table>
-
-		<p>Vid betyg 1 eller 2 skall gästens enkät kopieras och lämnas
-			till ansvarig för uppföljning.</p>
+		</table>		
 
 		<g:each in="${activeBooleanQuestions}" var="q">
 			<h2>

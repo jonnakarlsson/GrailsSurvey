@@ -30,31 +30,25 @@ class AdminController {
 	}
 
 
-	def createGradeQuestion(){
+	def createQuestion(){
 		if (request.post){
 
 			def allQuestions = SurveyQuestion.list(sort:"questionId")
-
-			def q = new SurveyQuestion
-					(questionType: 1, dateCreated: new Date(), questionText: params.newQuestion,
-					enabled: params.enabled, sortOrder: params.sortNo, questionId: allQuestions.size()+1 )q.save(failOnError: true)
-			println q
+			
+			int questionType = Integer.parseInt(params.questionType)
+			boolean enabled = params.boolean('enabled')
+			int sortOrder = Integer.parseInt(params.sortOrder)
+			
+			
+			SurveyQuestion question = new SurveyQuestion(questionType: questionType, dateCreated: new Date(), questionText: params.newQuestion,
+			enabled: enabled, sortOrder: sortOrder, questionId: allQuestions.size()+1 ) 
+			question.save(failOnError: true)
+			
+			println question
 
 			redirect action: "index"
 		}
-	}
-	
-	def createTextQuestion(){
-		if (request.post){
-			//skapa en ny textfråga
-		}
-	}
-	
-	def createBooleanQuestion(){
-		if (request.post){
-			//skapa en ny boolean fråga 
-		}
-	}
+	}	
 	
 	def edit(){
 		if (request.post){			

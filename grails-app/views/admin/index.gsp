@@ -16,8 +16,7 @@
 
 	
 		<table class="Qtable">
-			<caption>Enkätfrågor som för närvarande är aktiverade i
-				enkäten</caption>
+			<caption>Frågor i den aktuella enkäten</caption>
 			<thead>
 				<tr>
 					<th>Sort.nr</th>
@@ -97,20 +96,51 @@
 				</g:each>
 			</tbody>
 		</table>
-	
-	
+		
 		<table class="Qtable">
-			<caption>Samtliga enkäfrågor i ID-nummerordning</caption>
+			<caption>Skapa en ny fråga</caption>
 			<thead>
 				<tr>
 					<th>ID nummer</th>
-					<th>Frågetext</th>
 					<th>Sorteringsnr</th>
-					<th>Nytt sort.nr</th>
+					<th>Frågetext</th>					
+					<th>Svarstyp</th>
 					<th>Aktiverad</th>
 				</tr>
 			</thead>
-
+			<tbody>								
+				<g:form action = "createQuestion">
+				<tr>
+					<td>${nextNumber}</td>
+					<td><input type="text" name="sortOrder" id="sort" class="nrInput"
+						maxlength="2"></td>
+					<td class="questionText"><input type="text" name="newQuestion"
+						id="question" class="questionInput" placeholder="Ny fråga"></td>					
+					<td>
+					<select name="questionType">
+					<option value="1">Betyg</option>
+					<option value="2">Ja/Nej</option>
+					<option value="3">Textsvar</option>
+					</select>
+					</td>
+					<td><input type="checkbox" name="enabled" value="true" checked></td>
+					<td class="questionSave"><input type="submit" value="SPARA "></td>					
+				</tr>	
+				</g:form>			
+				</tbody>
+		</table>
+	
+		<table class="Qtable">
+			<caption>Ändra status på en tidigare skapad fråga</caption>
+			<thead>
+				<tr>
+					<th>ID nummer</th>
+					<th>Sorteringsnr</th>
+					<th>Frågetext</th>					
+					<th>Nytt sort.nr</th>
+					<th>Aktiverad</th>
+				</tr>
+			</thead>		
 			<tbody>
 
 				<g:each in="${allQuestions}" var="q">
@@ -120,34 +150,22 @@
 						<td>
 							${q.questionId}
 						</td>
-						<td class="questionText">
-							${q.questionText}
-						</td>
 						<td>
 							${q.sortOrder}
 						</td>
+						<td class="questionText">
+							${q.questionText}
+						</td>						
 						<td>
 							<input type="text" name="sortNo" id="sort" class="nrInput"
 						maxlength="2">
 						</td>
 						<td><g:checkBox name="enabled" value="true" checked="${q.enabled}" /></td>
-						<td class="questionSave"><input type="submit" value="ÄNDRA "></td>
+						<td class="questionSave"><input type="submit" value="SPARA"></td>
 					</tr>
 					</g:form>
 				</g:each>
-				<g:form action = "createGradeQuestion">
-				<tr>
-					<td>${nextNumber}</td>
-					<td class="questionText"><input type="text" name="newQuestion"
-						id="question" class="questionInput" placeholder="Ny fråga"></td>
-					<td><input type="text" name="sortNo" id="sort" class="nrInput"
-						maxlength="2"></td>
-					<td>
-					</td>
-					<td><input type="checkbox" name="enabled" value="true"></td>
-					<td class="questionSave"><input type="submit" value="SPARA "></td>					
-				</tr>	
-				</g:form>			
+				
 			</tbody>
 		</table>
 	
