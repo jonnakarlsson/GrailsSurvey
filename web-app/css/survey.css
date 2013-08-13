@@ -1,0 +1,94 @@
+
+        body {
+        background-color: papayawhip;
+        margin: 0 15%;
+        font-family: verdana;
+        line-height: 1.75em;
+        }
+
+        h1 {
+        text-align: center;
+        font-family: verdana;
+        font-weight: normal;
+        font-size: 1em;
+        border-bottom: 2px solid #57b1bc;
+        }
+
+        h2 {
+        padding: 1em 0em;
+        color: #d1633c;
+        font-weight: bold;
+        font-size: 1em;
+        }
+
+        table {
+            padding: 0em 3em 3em 3em;
+        }
+
+        th {
+            font-size: 1em;
+            font-family: verdana;
+            font-weight: bold;
+            text-align: left;
+            padding: 1em 3em 1em 1em;
+        }
+
+        caption {
+            padding: 2em 3em 0em 3em;
+            color: #d1633c;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: left;
+            text-decoration: none;
+            }
+
+        tbody {
+            text-align: left;
+        }
+
+	td {
+        padding: 0em 1em;
+        text-align: center;
+        }
+
+	input.questionInput {
+	    width: 30em;
+		height: 2em;
+		border: 1px solid #d1633c;
+	}
+
+	input.nrInput {
+	    width: 3em;
+		height: 2em;
+		border: 1px solid #d1633c;
+	}
+
+	td.questionText	{
+		text-align: left;
+	}
+
+	td.questionSave	{
+    		text-align: left;
+    		padding: 1em 1em;
+    	}
+
+        #knappar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #knappar ul li {
+            float: left;
+        }
+        #knappar ul li a {
+            text-decoration: none;
+            letter-spacing: 7px;
+            color: #57b1bc;
+            font-weight: bold;
+            display: block;
+            padding: 0.5em;
+            margin: 3em;
+            border: 2px solid #57b1bc;
+            border-radius: 1em;
+        }
+
