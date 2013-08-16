@@ -12,8 +12,10 @@ class SurveyAnswer {
 	String contact 				//kontaktpersonen 
 
 	static constraints = {
-		//answerDate(min: DateFormat.parse("yyyyMMdd", "2013-01-01"), max: DateFormat.parse("yyyyMMdd", "2112-12-31"))
+		answerDate (blank:false) 
+		//answerDate(min: DateFormat.parse("yyyyMMdd", "20130101"), max: DateFormat.parse("yyyyMMdd", "21121231"))
 		answerValue (maxSize:1000)
+		
 	}
 
 	static transients = ["answer"] 

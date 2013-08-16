@@ -16,12 +16,14 @@ class SurveyQuestion {
 	int questionId 			// id på frågan 
 
 	static constraints = {
+		
 		questionType(inList:[
 			TYPE_GRADE,
 			TYPE_BOOLEAN,
 			TYPE_TEXT
 		])
-		questionText (maxSize:80)
+		questionText (maxSize:80, blank:false)
+		sortOrder (blank:false)
 	}
 
 	static mapping = { sort "sortOrder" }
