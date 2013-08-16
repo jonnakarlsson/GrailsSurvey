@@ -16,9 +16,7 @@
 
 		<g:form action = "createAnswer">
 				
-		<h2>Svarsdatum</h2>
-
-		<p>
+			<p>
 			<label for="date">Gästens svarsdatum:</label> <input type="text"
 				name="dt" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				autofocus="" required="">
@@ -52,14 +50,16 @@
 		</table>		
 
 		<g:each in="${activeBooleanQuestions}" var="q">
-			<h2>
-				${q.questionText}
-			</h2>
-			<p>
-				<input type="radio" name="question${q.id}" value="true"> JA 
-				<input type="radio" name="question${q.id}" value="false"> NEJ 
-				<input type="radio" name="question${q.id}" value="null" checked>Ej ifyllt
-			</p>
+			<tr>					
+				<td class="questionText">
+					${q.questionText}
+				</td>
+			
+				<td><input type="radio" name="question${q.id}" value="true"> JA</td> 
+				<td><input type="radio" name="question${q.id}" value="false"> NEJ</td> 
+				<td><input type="radio" name="question${q.id}" value="null" checked>Ej ifyllt</td>
+			</tr>
+			
 		</g:each>
 		
 		<g:each in="${activeTextQuestions}" var="q">

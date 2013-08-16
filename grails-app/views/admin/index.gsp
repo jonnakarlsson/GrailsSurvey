@@ -20,8 +20,7 @@
 			<thead>
 				<tr>
 					<th>Sort.nr</th>
-					<th>Frågetext, betygsfrågor</th>
-					<th>ID nummer</th>					
+					<th>Betygsfrågor</th>										
 				</tr>
 			</thead>
 			<tbody>
@@ -34,10 +33,7 @@
 						</td>
 						<td class="questionText">
 							${q.questionText}
-						</td>
-						<td>
-							${q.questionId}
-						</td>						
+						</td>								
 					</tr>
 				</g:each>
 			</tbody>
@@ -47,8 +43,7 @@
 			<thead>
 				<tr>
 					<th>Sort.nr</th>
-					<th>Frågetext, JA/NEJ - frågor</th>
-					<th>ID nummer</th>					
+					<th>JA/NEJ - frågor</th>										
 				</tr>
 			</thead>
 			<tbody>
@@ -61,10 +56,7 @@
 						</td>
 						<td class="questionText">
 							${q.questionText}
-						</td>
-						<td>
-							${q.questionId}
-						</td>						
+						</td>								
 					</tr>
 				</g:each>
 			</tbody>
@@ -74,8 +66,7 @@
 			<thead>
 				<tr>
 					<th>Sort.nr</th>
-					<th>Frågetext, Frågor med textsvar</th>
-					<th>ID nummer</th>					
+					<th>Frågor med textsvar</th>										
 				</tr>
 			</thead>
 			<tbody>
@@ -88,10 +79,7 @@
 						</td>
 						<td class="questionText">
 							${q.questionText}
-						</td>
-						<td>
-							${q.questionId}
-						</td>						
+						</td>											
 					</tr>
 				</g:each>
 			</tbody>
