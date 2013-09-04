@@ -115,6 +115,24 @@ textarea.Textmeddelande {
 	height: 10em;
 }
 
+#ToppKnappar ul {
+	list-style-type: none; 
+	padding: 0;
+	margin: 0;
+}
+
+#ToppKnappar ul li {
+	float: left;
+	margin: 1px;
+}
+
+#ToppKnappar ul li a {
+	text-decoration: none;
+	color: black;
+	display: block; 
+	background-color: rgb(240, 229, 199);
+}
+
 #knappar ul {
 	list-style-type: none;
 	padding: 0;
