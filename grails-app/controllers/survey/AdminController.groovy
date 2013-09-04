@@ -44,8 +44,10 @@ class AdminController {
 			enabled: enabled, sortOrder: sortOrder, questionId: allQuestions.size()+1 ) 
 			question.save(failOnError: true)
 			
-			println question
-
+			if(question.hasErrors()){
+				return [question: question]
+			}
+			
 			redirect action: "index"
 		}
 	}	

@@ -1,94 +1,138 @@
+body {
+	background-color: white;
+	margin: 0 15%;
+	font-family: verdana;
+	line-height: 1.75em;
+}
 
-        body {
-        background-color: papayawhip;
-        margin: 0 15%;
-        font-family: verdana;
-        line-height: 1.75em;
-        }
+h1 {
+	text-align: center;
+	font-family: verdana;
+	font-weight: normal;
+	font-size: 1em;
+	border-bottom: 2px solid #57b1bc;
+}
 
-        h1 {
-        text-align: center;
-        font-family: verdana;
-        font-weight: normal;
-        font-size: 1em;
-        border-bottom: 2px solid #57b1bc;
-        }
+h2 {
+	padding: 1em 0em;
+	color: black;
+	font-weight: bold;
+	font-size: 1em;
+}
 
-        h2 {
-        padding: 1em 0em;
-        color: #d1633c;
-        font-weight: bold;
-        font-size: 1em;
-        }
+table {
+	padding: 0em 0em;
+}
 
-        table {
-            padding: 0em 3em 3em 3em;
-        }
+div.shadow {
+	width: 1450px;
+}
 
-        th {
-            font-size: 1em;
-            font-family: verdana;
-            font-weight: bold;
-            text-align: left;
-            padding: 1em 3em 1em 1em;
-        }
+div.questionlist {
+	width: 1400px;
+	text-align: left;
+	border: 3px solid white;
+	padding: 6px;
+	margin-top: 6px;
+	margin-left: 6px;
+	margin-bottom: 35px;
+	background-color: white;
+}
 
-        caption {
-            padding: 2em 3em 0em 3em;
-            color: #d1633c;
-            font-weight: bold;
-            font-size: 1em;
-            text-align: left;
-            text-decoration: none;
-            }
+table.qEdit {
+	padding: 3em 3em;
+}
 
-        tbody {
-            text-align: left;
-        }
+th {
+	font-size: 1em;
+	font-family: verdana;
+	font-weight: bold;
+	text-align: left;
+	padding: 1em 3em 1em 1em;
+	background: rgb(136, 181, 210);
+}
 
-	td {
-        padding: 0em 1em;
-        text-align: center;
-        }
+caption {
+	padding: 2em 3em 0em 3em;
+	color: black;
+	font-weight: bold;
+	font-size: 1em;
+	text-align: left;
+	text-decoration: none;
+	padding: 20px;
+}
 
-	input.questionInput {
-	    width: 30em;
-		height: 2em;
-		border: 1px solid #d1633c;
-	}
+tbody {
+	text-align: left;
+}
 
-	input.nrInput {
-	    width: 3em;
-		height: 2em;
-		border: 1px solid #d1633c;
-	}
+td {
+	padding: 0em 1em;
+	text-align: center;
+	background: rgb(240, 229, 199);
+}
 
-	td.questionText	{
-		text-align: left;
-	}
+td.questionText {
+	text-align: left;
+	width: 800px;
+}
 
-	td.questionSave	{
-    		text-align: left;
-    		padding: 1em 1em;
-    	}
+td.QuestionText1 {
+	text-align: left;
+	width: 1220px;
+}
 
-        #knappar ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        #knappar ul li {
-            float: left;
-        }
-        #knappar ul li a {
-            text-decoration: none;
-            letter-spacing: 7px;
-            color: #57b1bc;
-            font-weight: bold;
-            display: block;
-            padding: 0.5em;
-            margin: 3em;
-            border: 2px solid #57b1bc;
-            border-radius: 1em;
-        }
+td.QuestionText2 {
+	text-align: left;
+	width: 600px;
+}
 
+td.QuestionText3 {
+	text-align: left;
+	width: 675px;
+}
+
+td.questionSave {
+	text-align: left;
+	padding: 0em 1em;
+}
+
+input.questionInput {
+	width: 40em;
+	height: 2em;
+	border: 1px solid #d1633c;
+}
+
+input.nrInput {
+	width: 3em;
+	height: 2em;
+	border: 1px solid #d1633c;
+	padding: 0em
+}
+
+textarea.Textmeddelande {
+	width: 60em;
+	height: 10em;
+}
+
+#knappar ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#knappar ul li {
+	float: left;
+}
+
+#knappar ul li a {
+	text-decoration: none;
+	letter-spacing: 7px;
+	color: #57b1bc;
+	font-weight: bold;
+	display: block;
+	padding: 0.5em;
+	margin: 3em;
+	border: 2px solid #57b1bc;
+	border-radius: 1em;
+}
