@@ -17,7 +17,7 @@
 			<li><a href="http://localhost:8080/survey/statistics/index"> STATISTIK </a></li>
 		</ul>
 	</nav>
-	<br>
+	<br>	
 	<h1>
 		<img
 			src="${resource(dir: 'images', file:'djnLogo.jpg')}"

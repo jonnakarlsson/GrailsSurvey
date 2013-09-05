@@ -8,24 +8,50 @@
 </head>
 
 <body>
-	<h1>
-		<img
-			src="${resource(dir: 'images', file:'djuronaset_logo_papaya.jpg')}"
-			alt="Logo Djuronaset">
-	</h1>
+	<div class="top">
+		<nav id="ToppKnappar">
+			<ul>
+				<li><a href="http://localhost:8080/survey/survey/index">
+						SVARSENKÄT </a></li>
+				<li><a href="http://localhost:8080/survey/admin/index">
+						ADMINSIDA </a></li>
+				<li><a href="http://localhost:8080/survey/statistics/index">
+						STATISTIK </a></li>
+			</ul>
+		</nav>
+		<br>
+		<h1>
+			<img src="${resource(dir: 'images', file:'djnLogo.jpg')}"
+				alt="Logo Djuronaset">
+		</h1>
+	</div>
+
+<div class="body">
+<p><h2>Statistiksidan - Vad vill du veta?</h2></p>
+		
+		<p>
+		<g:form action="Stats">
+			<label>Från och med:</label> <input type="text"
+				name="startDate" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
+				autofocus="" required="">	
+			<label>Till och med:</label> <input type="text"
+				name="endDate" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
+				autofocus="" required="">	
+		
+			<label>Vilka frågor vill du se? </label><select name="whichQuestions">
+							<option value="1">BETYGSFRÅGOR</option>
+							<option value="2">JA/NEJ FRÅGOR</option>
+							<option value="3">TEXTMEDDELANDEN</option>
+							<option value="4">BETYG & JA/NEJ</option>
+							<option value="5">ALLA INKL TEXT</option>
+					</select>
+			<input type="submit" value="VISA">		
+			</g:form>
+		</p>
 	
-	<h2> Här kommer det att finnas val för att lista och skriva ut statistik ifrån enkäterna. </h2>
-
-			
-
-	<nav id="knappar">
-		<ul>
-			<li><a href="index.html"> SVARSENKÄT </a></li>
-			<li><a href="admin.html"> ADMINSIDA </a></li>
-			<li><a href="statistik.html"> STATISTIK </a></li>
-		</ul>
-	</nav>
-
+		
+		
+	</div>
 </body>
 
 </html>
