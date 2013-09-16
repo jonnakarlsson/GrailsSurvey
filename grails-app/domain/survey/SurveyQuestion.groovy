@@ -29,7 +29,7 @@ class SurveyQuestion {
 	static mapping = { sort "sortOrder" }
 
 	String toString() {
-		return "Fråga: " + questionText
+		return sortOrder + ": " + questionText
 	}
 	
 	void changeSortOrder(int newSortOrder){
