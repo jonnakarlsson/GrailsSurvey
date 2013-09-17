@@ -30,7 +30,7 @@
 <p><h2>Statistiksidan - Vad vill du veta?</h2></p>
 		
 		<p>
-		<g:form action="Stats">
+		<g:form action="index" method = "get">
 			<label>Från och med:</label> <input type="text"
 				name="startDate" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				autofocus="" required="">	
@@ -78,6 +78,6 @@
 		</p>
 		
 	</div>
-</body>
+	</body>
 
 </html>
