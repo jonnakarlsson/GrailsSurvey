@@ -28,16 +28,16 @@
 
 <div class="body">
 <p><h2>Statistiksidan - Vad vill du veta?</h2></p>
-		
+
 		<p>
-		<g:form action="index" method = "get">
-			<label>Från och med:</label> <input type="text"
-				name="startDate" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
-				autofocus="" required="">	
-			<label>Till och med:</label> <input type="text"
-				name="endDate" id="date" placeholder="ÅÅÅÅMMDD" maxlength="8"
-				autofocus="" required="">	
-		
+		<g:form action="index">
+			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 30)}"
+				name="startDate" id="startDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
+				autofocus="" required="">
+			<label>Till och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() + 1)}"
+				name="endDate" id="endDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
+				required="">
+
 			<label>Vilka frågor vill du se? </label><select name="whichQuestions">
 							<option value="1">BETYGSFRÅGOR</option>
 							<option value="2">JA/NEJ FRÅGOR</option>
@@ -45,20 +45,20 @@
 							<option value="4">BETYG & JA/NEJ</option>
 							<option value="5">ALLA INKL TEXT</option>
 					</select>
-			<input type="submit" value="VISA">		
+			<input type="submit" value="VISA">
 			</g:form>
 		</p>
-	
+
 		<p>
 		<table>
-			<caption>Statistik för vald tidpunkt</caption>	
+			<caption>Statistik för vald tidpunkt</caption>
 			<thead>
 			<tr>
-				<th>Fråga</th>	
+				<th>Fråga</th>
 				<th>Antal</th>
-				<th>Medelbetyg</th>			
+				<th>Medelbetyg</th>
 				</tr></thead>
-				
+
 			<tbody>
 				<g:each in="${listWithQuestionAvrageAndCount}" var="map">
 					<tr>
@@ -76,7 +76,7 @@
 			</tbody>
 		</table>
 		</p>
-		
+
 	</div>
 	</body>
 
