@@ -1,3 +1,4 @@
+import survey.SurveyAnswer
 import survey.SurveyQuestion;
 
 class BootStrap {
@@ -16,7 +17,14 @@ class BootStrap {
         new SurveyQuestion([questionId: 9, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 8, questionText: "Vilket betyg ger du Djurönäset som helhet?", enabled: true]).save(failOnError:true)
 		new SurveyQuestion([questionId: 10, questionType : SurveyQuestion.TYPE_BOOLEAN, sortOrder: 1, questionText: "Rekommenderar du Djurönäset?", enabled: true]).save(failOnError:true)
 		new SurveyQuestion([questionId: 11, questionType : SurveyQuestion.TYPE_TEXT, sortOrder: 1, questionText: "Textmeddelande", enabled: true]).save(failOnError:true)
-		
+
+        def allActive = SurveyQuestion.findAllEnabled()
+        def random = new Random()
+        25.times {i ->
+            for(q in allActive) {
+                new SurveyAnswer(transactionId: i+1, question: q, answerDate: new Date(), answerValue: "${random.nextInt(5)+1}", contact: '').save(failOnError: true)
+            }
+        }
     }
     def destroy = {
     }
