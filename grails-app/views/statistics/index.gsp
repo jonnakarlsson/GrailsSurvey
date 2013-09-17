@@ -38,7 +38,7 @@
 				name="endDate" id="endDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				required="">
 
-			<label>Vilka frågor vill du se? </label><select name="whichQuestions">
+			<label>Vilka frågor vill du se? </label><select name="questionType">
 							<option value="1">BETYGSFRÅGOR</option>
 							<option value="2">JA/NEJ FRÅGOR</option>
 							<option value="3">TEXTMEDDELANDEN</option>

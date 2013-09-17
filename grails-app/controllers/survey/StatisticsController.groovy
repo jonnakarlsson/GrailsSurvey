@@ -2,26 +2,24 @@ package survey
 import java.text.SimpleDateFormat
 class StatisticsController {
 
-	def index(){
+	def index(int questionType){
 		if (request.post){
 
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-			def allQuestions = SurveyQuestion.list()
+			def allGradeQuestions = SurveyQuestion.findAllByQuestionTypeAndEnabled(questionType, true)
 			Date sd = dateFormat.parse(params.startDate)
 			Date ed = dateFormat.parse(params.endDate)
 			def listQACs = []
 
-			for (q in allQuestions){
+			for (q in allGradeQuestions){
 				def questionText = q.questionText;
 				int countAnswers = 0;
 				int totValue = 0;
 				def allAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
 				for (a in allAnswers){
-					if (a.question.questionType == 1)					{
-						countAnswers ++
-						totValue = totValue + Integer.parseInt(a.answerValue)
-					}
+					countAnswers ++
+					totValue = totValue + Integer.parseInt(a.answerValue)
 				}
                 listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]
 			}
