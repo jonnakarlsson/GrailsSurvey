@@ -29,7 +29,7 @@ class StatisticsController {
 			return [listWithQuestionAvrageAndCount: listQACs]
 		}
 	}
-	def onlyGrade(){
+	def type1(){
 		if (request.post){
 			
 			Date sd = dateFormat.parse(params.startDate)
@@ -55,19 +55,18 @@ class StatisticsController {
 			return [listWithQuestionAvrageAndCount: listQACs]
 		}
 	}
-	def onlyBoolean(){
+	def type2(){
 		if (request.post){
 			
 			Date sd = dateFormat.parse(params.startDate)
 			Date ed = dateFormat.parse(params.endDate)
-			def allBooleanQueestions = allQuestions.findAll{ SurveyQuestion ->
-				SurveyQuestion.getQuestionType == 2
+			def allBooleanQuestions = allQuestions.findAll{ SurveyQuestion ->
+				SurveyQuestion.getQuestionType() == 2
 			}
 			def listQCP = []
 
 			for (q in allBooleanQuestions){
 				def questionText = q.questionText;
-				int countAnswers = totTrue + totFalse; //flytta ner i mappen
 				int totTrue = 0;
 				int totFalse = 0;
 				def allBooleanAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
@@ -79,7 +78,7 @@ class StatisticsController {
 					else if (Boolean.parseBoolean(a.answerValue)== false){
 						totFalse ++
 					}
-
+					int countAnswers = totTrue + totFalse;
 					int trues = totTrue / countAnswers * 100;
 					int falses = totFalse / countAnswers * 100;
 					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses ]
