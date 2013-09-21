@@ -30,7 +30,7 @@
 <p><h2>Statistiksidan - Vad vill du veta?</h2></p>
 
 		<p>
-		<g:form action="onlyBoolean">
+		<g:form action="type2">
 			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 30)}"
 				name="startDate" id="startDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				autofocus="" required="">
