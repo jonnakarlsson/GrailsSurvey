@@ -41,8 +41,8 @@ class StatisticsController {
 
 			for (q in allGradeQuestions){
 				def questionText = q.questionText;
-				int countAnswers = 0;
-				int totValue = 0;
+				int countAnswers = 0;				//ska detta ligga i for-loopen? 
+				int totValue = 0;					//ska detta ligga i for-loopen?
 				def allGradeAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
 				for (a in allGradeAnswers){
@@ -50,7 +50,7 @@ class StatisticsController {
 					countAnswers ++
 					totValue = totValue + Integer.parseInt(a.answerValue)
 				}
-				listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]
+				listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ? 
 			}
 			return [listWithQuestionAvrageAndCount: listQACs]
 		}
@@ -84,6 +84,29 @@ class StatisticsController {
 					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses ]
 				}
 				return [listWithQuestionCountAndProcentage: listQCP]
+			}
+		}
+	}
+	
+	def type3(){
+		if (request.post){
+			
+			Date sd = dateFormat.parse(params.startDate)
+			Date ed = dateFormat.parse(params.endDate)
+			def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
+				SurveyQuestion.getQuestionType() == 3
+			}
+			def listQandText = []
+
+			for (q in allTextQuestions){
+				def questionText = q.questionText;
+				def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
+
+				for (a in allTextAnswers){
+					def textAnswer = a.answerValue
+					listQandT << [question: questionText, text: textAnswer]
+				}
+				return [listWithQuestionAndText: listQandT]
 			}
 		}
 	}
