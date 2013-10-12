@@ -105,9 +105,9 @@ class StatisticsController {
 				for (a in allTextAnswers){
 					def textAnswer = a.answerValue
 					StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
-					listQandT << [textDate: textDate, question: questionText, text: textAnswer]
+					listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
 				}
-				return [listWithDateQuestionAndText: listQandT]
+				return [listWithDateQuestionAndText: listQDateAndText]
 			}
 		}
 	}

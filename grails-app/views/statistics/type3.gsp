@@ -31,7 +31,7 @@
 
 		<p>
 		<g:form action="type3">
-			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 30)}"
+			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 365)}"
 				name="startDate" id="startDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				autofocus="" required="">
 			<label>Till och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() + 1)}"
@@ -55,7 +55,7 @@
 			<thead>
 			<tr>
 				<th>Datum</th>
-				<th>Meddelnade</th>
+				<th>Meddelande</th>
 				</tr></thead>
 
 			<tbody>
@@ -64,7 +64,7 @@
 						<td>
 							${map.textDate}
 						</td>
-						<td>
+						<td class="QuestionText1">
 							${map.text}
 						</td>						
 					</tr>

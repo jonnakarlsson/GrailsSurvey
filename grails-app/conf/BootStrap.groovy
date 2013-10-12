@@ -18,12 +18,40 @@ class BootStrap {
 		new SurveyQuestion([questionId: 10, questionType : SurveyQuestion.TYPE_BOOLEAN, sortOrder: 1, questionText: "Rekommenderar du Djurönäset?", enabled: true]).save(failOnError:true)
 		new SurveyQuestion([questionId: 11, questionType : SurveyQuestion.TYPE_TEXT, sortOrder: 1, questionText: "Textmeddelande", enabled: true]).save(failOnError:true)
 
-        def allActive = SurveyQuestion.findAllEnabled()
-        def random = new Random()
-        25.times {i ->
-            for(q in allActive) {
-                new SurveyAnswer(transactionId: i+1, question: q, answerDate: new Date(), answerValue: "${random.nextInt(5)+1}", contact: '').save(failOnError: true)
-            }
+		def random = new Random()
+		
+		def activeQuestions = SurveyQuestion.findAllEnabled()
+		
+		def activeGradeQuestions = activeQuestions.findAll{ SurveyQuestion ->
+			SurveyQuestion.getQuestionType() == 1
+		}	
+		
+		def activeBooleanQuestions = activeQuestions.findAll{ SurveyQuestion ->
+		SurveyQuestion.getQuestionType() == 2
+		}
+		
+		def activeTextQuestions = activeQuestions.findAll{ SurveyQuestion ->
+			SurveyQuestion.getQuestionType ()== 3
+		}
+		
+		25.times {i ->
+			for(q in activeGradeQuestions) {
+				new SurveyAnswer(transactionId: i+1, question: q, answerDate: new Date(), answerValue: "${random.nextInt(5)+1}", contact: '').save(failOnError: true)
+			}
+		}
+			
+		25.times {j ->
+				for(q in activeBooleanQuestions) {
+					new SurveyAnswer(transactionId: j+1, question: q, answerDate: new Date(), answerValue: "${random.nextBoolean()}", contact: '').save(failOnError: true)
+			}
+		}
+		
+		String bs = "Real-time solutions, architect widgets rich extensible rss-capable implement iterate grow compelling. Synergistic synergize deliver value-added intuitive blogospheres transparent e-enable repurpose, create incentivize e-markets supply-chains global; life-hacks, content e-enable. Dynamic target"
+		
+		10.times {k ->
+			for (q in activeTextQuestions) {
+				new SurveyAnswer(transactionId: k+1, question: q, answerDate: new Date(), answerValue: bs, contact:'').save(failOnError: true)
+			}
         }
     }
     def destroy = {

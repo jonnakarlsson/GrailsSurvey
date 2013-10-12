@@ -27,11 +27,11 @@
 	</div>
 
 <div class="body">
-<p><h2>Statistiksidan - Vad vill du veta?</h2></p>
+<p><h2>Skall integreras i statistiksidans huvudsida</h2></p>
 
 		<p>
 		<g:form action="type1">
-			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 30)}"
+			<label>Från och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() - 360)}"
 				name="startDate" id="startDate" placeholder="ÅÅÅÅMMDD" maxlength="8"
 				autofocus="" required="">
 			<label>Till och med:</label> <input type="text" value="${formatDate(format: 'yyyyMMdd', date: new Date() + 1)}"
