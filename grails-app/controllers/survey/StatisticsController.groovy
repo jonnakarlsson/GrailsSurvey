@@ -96,7 +96,7 @@ class StatisticsController {
 			def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
 				SurveyQuestion.getQuestionType() == 3
 			}
-			def listQandText = []
+			def listQDateAndText = []
 
 			for (q in allTextQuestions){
 				def questionText = q.questionText;
@@ -104,9 +104,10 @@ class StatisticsController {
 
 				for (a in allTextAnswers){
 					def textAnswer = a.answerValue
-					listQandT << [question: questionText, text: textAnswer]
+					StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
+					listQandT << [textDate: textDate, question: questionText, text: textAnswer]
 				}
-				return [listWithQuestionAndText: listQandT]
+				return [listWithDateQuestionAndText: listQandT]
 			}
 		}
 	}
