@@ -27,7 +27,7 @@
 	</div>
 
 <div class="body">
-<p><h2>Skall integreras i statistiksidans huvudsida</h2></p>
+<p><h2>(Den här sidan ska integreras i statistiksidans huvudsida)</h2></p>
 
 		<p>
 		<g:form action="type2">
@@ -58,6 +58,7 @@
 				<th>Totalantal</th>
 				<th>% JA</th>
 				<th>% NEJ</th>
+				<th>ej svar</th>
 				</tr></thead>
 
 			<tbody>
@@ -75,6 +76,8 @@
 						<td>
 							${map.falses}
 						</td>
+						<td>
+							${map.notAnswered}
 					</tr>
 				</g:each>
 			</tbody>

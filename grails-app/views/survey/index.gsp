@@ -62,7 +62,7 @@
 						<td><input type="radio" name="question${q.id}" value="4">4</td>
 						<td><input type="radio" name="question${q.id}" value="5">5</td>
 						<td><input type="radio" name="question${q.id}" value="0"
-							checked>Inget svar</td>
+							checked>Ej svar</td>
 					</tr>
 				</g:each>
 			</tbody>

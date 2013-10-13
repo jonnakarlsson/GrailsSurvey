@@ -44,12 +44,16 @@ class StatisticsController {
 				int totValue = 0;					//ska detta ligga i for-loopen?
 				def allGradeAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
-				for (a in allGradeAnswers){
+				if (allGradeAnswers.size()>0){
 
-					countAnswers ++
-					totValue = totValue + Integer.parseInt(a.answerValue)
+					for (a in allGradeAnswers){
+						if (Integer.parseInt(a.answerValue)>0){
+							countAnswers ++
+							totValue = totValue + Integer.parseInt(a.answerValue)
+						}
+					}
+					listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ?
 				}
-				listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ?
 			}
 			return [listWithQuestionAvrageAndCount: listQACs]
 		}
@@ -68,47 +72,56 @@ class StatisticsController {
 				int countAnswers = 0
 				int totTrue = 0;
 				int totFalse = 0;
+				int notAnswered = 0;
 				def allBooleanAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
-				for (a in allBooleanAnswers){
-					if (Boolean.parseBoolean(a.answerValue) == true){
-						totTrue ++
-					}
-					else if (Boolean.parseBoolean(a.answerValue)== false){
-						totFalse ++
-					}
-					countAnswers ++
+				if (allBooleanAnswers.size()>0){
+
+					for (a in allBooleanAnswers){
+						if (Boolean.parseBoolean(a.answerValue) == true){
+							totTrue ++
+							countAnswers ++
+						}
+						else if (Boolean.parseBoolean(a.answerValue)== false){
+							totFalse ++
+							countAnswers ++
+						}
+						else if (a.answerValue==null){
+							notAnswered ++					
+						}						
 				}
 				int trues = totTrue / countAnswers * 100;
 				int falses = totFalse / countAnswers * 100;
-				listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses ]
+				listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
 			}
-			return [listWithQuestionCountAndProcentage: listQCP]
+
+		}
+		return [listWithQuestionCountAndProcentage: listQCP]
+	}
+}
+
+
+def type3(){
+	if (request.post){
+
+		Date sd = dateFormat.parse(params.startDate)
+		Date ed = dateFormat.parse(params.endDate)
+		def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
+			SurveyQuestion.getQuestionType() == 3
+		}
+		def listQDateAndText = []
+
+		for (q in allTextQuestions){
+			def questionText = q.questionText;
+			def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
+
+			for (a in allTextAnswers){
+				def textAnswer = a.answerValue
+				StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
+				listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
+			}
+			return [listWithDateQuestionAndText: listQDateAndText]
 		}
 	}
-
-
-	def type3(){
-		if (request.post){
-
-			Date sd = dateFormat.parse(params.startDate)
-			Date ed = dateFormat.parse(params.endDate)
-			def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
-				SurveyQuestion.getQuestionType() == 3
-			}
-			def listQDateAndText = []
-
-			for (q in allTextQuestions){
-				def questionText = q.questionText;
-				def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
-
-				for (a in allTextAnswers){
-					def textAnswer = a.answerValue
-					StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
-					listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
-				}
-				return [listWithDateQuestionAndText: listQDateAndText]
-			}
-		}
-	}
+}
 }
