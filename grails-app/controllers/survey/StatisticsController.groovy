@@ -78,7 +78,11 @@ class StatisticsController {
 				if (allBooleanAnswers.size()>0){
 
 					for (a in allBooleanAnswers){
-						if (Boolean.parseBoolean(a.answerValue) == true){
+
+						if (a.answerValue == "null"){
+							notAnswered ++
+						}
+						else if (Boolean.parseBoolean(a.answerValue) == true){
 							totTrue ++
 							countAnswers ++
 						}
@@ -86,42 +90,39 @@ class StatisticsController {
 							totFalse ++
 							countAnswers ++
 						}
-						else if (a.answerValue==null){
-							notAnswered ++					
-						}						
+					}
+					int trues = totTrue / countAnswers * 100;
+					int falses = totFalse / countAnswers * 100;
+					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
 				}
-				int trues = totTrue / countAnswers * 100;
-				int falses = totFalse / countAnswers * 100;
-				listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
+
 			}
-
-		}
-		return [listWithQuestionCountAndProcentage: listQCP]
-	}
-}
-
-
-def type3(){
-	if (request.post){
-
-		Date sd = dateFormat.parse(params.startDate)
-		Date ed = dateFormat.parse(params.endDate)
-		def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
-			SurveyQuestion.getQuestionType() == 3
-		}
-		def listQDateAndText = []
-
-		for (q in allTextQuestions){
-			def questionText = q.questionText;
-			def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
-
-			for (a in allTextAnswers){
-				def textAnswer = a.answerValue
-				StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
-				listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
-			}
-			return [listWithDateQuestionAndText: listQDateAndText]
+			return [listWithQuestionCountAndProcentage: listQCP]
 		}
 	}
-}
+
+
+	def type3(){
+		if (request.post){
+
+			Date sd = dateFormat.parse(params.startDate)
+			Date ed = dateFormat.parse(params.endDate)
+			def allTextQuestions = allQuestions.findAll{ SurveyQuestion ->
+				SurveyQuestion.getQuestionType() == 3
+			}
+			def listQDateAndText = []
+
+			for (q in allTextQuestions){
+				def questionText = q.questionText;
+				def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
+
+				for (a in allTextAnswers){
+					def textAnswer = a.answerValue
+					StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
+					listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
+				}
+				return [listWithDateQuestionAndText: listQDateAndText]
+			}
+		}
+	}
 }

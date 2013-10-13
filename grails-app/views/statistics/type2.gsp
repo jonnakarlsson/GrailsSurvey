@@ -55,10 +55,10 @@
 			<thead>
 			<tr>
 				<th>Fråga</th>
-				<th>Totalantal</th>
+				<th>Antal svar</th>
 				<th>% JA</th>
 				<th>% NEJ</th>
-				<th>ej svar</th>
+				<th>Ej svarat</th>
 				</tr></thead>
 
 			<tbody>
