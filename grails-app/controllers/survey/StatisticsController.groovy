@@ -1,8 +1,9 @@
 package survey
-import java.text.SimpleDateFormat
+import java.text.*;
 class StatisticsController {
 
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	DecimalFormat df = new DecimalFormat("#.##");
 	def allQuestions = SurveyQuestion.list()
 
 	def index(){
@@ -52,7 +53,7 @@ class StatisticsController {
 							totValue = totValue + Integer.parseInt(a.answerValue)
 						}
 					}
-					listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ?
+					listQACs << [question: questionText, avrage: countAnswers ? df.format(totValue/countAnswers) : 0, totAnswers: countAnswers]  //Förklara ?
 				}
 			}
 			return [listWithQuestionAvrageAndCount: listQACs]
@@ -91,8 +92,8 @@ class StatisticsController {
 							countAnswers ++
 						}
 					}
-					int trues = totTrue / countAnswers * 100;
-					int falses = totFalse / countAnswers * 100;
+					int trues = totTrue ? totTrue / countAnswers * 100 : 0
+					int falses = totFalse ? totFalse / countAnswers * 100 : 0 
 					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
 				}
 
@@ -152,7 +153,7 @@ class StatisticsController {
 							totValue = totValue + Integer.parseInt(a.answerValue)
 						}
 					}
-					listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ?
+					listQACs << [question: questionText, avrage: countAnswers ? df.format(totValue/countAnswers) : 0, totAnswers: countAnswers]  //Förklara ?
 				}
 			}
 
@@ -185,8 +186,8 @@ class StatisticsController {
 							countAnswers ++
 						}
 					}
-					int trues = totTrue / countAnswers * 100;
-					int falses = totFalse / countAnswers * 100;
+					int trues = totTrue ? totTrue / countAnswers * 100 : 0
+					int falses = totFalse ? totFalse / countAnswers * 100 : 0
 					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
 				}
 
@@ -221,7 +222,7 @@ class StatisticsController {
 							totValue = totValue + Integer.parseInt(a.answerValue)
 						}
 					}
-					listQACs << [question: questionText, avrage: countAnswers ? totValue/countAnswers : 0, totAnswers: countAnswers]  //Förklara ?
+					listQACs << [question: questionText, avrage: countAnswers ? df.format(totValue/countAnswers) : 0, totAnswers: countAnswers]  //Förklara ?
 				}
 			}
 
@@ -254,8 +255,8 @@ class StatisticsController {
 							countAnswers ++
 						}
 					}
-					int trues = totTrue / countAnswers * 100;
-					int falses = totFalse / countAnswers * 100;
+					int trues = totTrue ? totTrue / countAnswers * 100 : 0
+					int falses = totFalse ? totFalse / countAnswers * 100 : 0
 					listQCP << [question: questionText, countAnswers: countAnswers, trues: trues, falses: falses, notAnswered: notAnswered ]
 				}
 
