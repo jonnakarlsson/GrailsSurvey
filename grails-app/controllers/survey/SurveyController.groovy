@@ -47,7 +47,7 @@ class SurveyController {
 				
 				println params;
 			}			
-			redirect action: "index" 			
+			redirect action: "index", params: [dt:params.dt] 			
 		}
 		
 	}
