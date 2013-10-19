@@ -12,6 +12,8 @@ class StatisticsController {
 			redirect (action: "type$whichQuestions", params: [startDate: params.startDate, endDate:params.endDate, whichQuestions: whichQuestions ])
 		}
 	}
+
+	//Fetch and show all Grade Questions
 	def type1(){
 
 
@@ -41,6 +43,8 @@ class StatisticsController {
 		return [listWithQuestionAvrageAndCount: listQACs, startDate: params.startDate, endDate:params.endDate, whichQuestions: params.whichQuestions ]
 
 	}
+
+	//Fetch and show all Boolean Questions
 	def type2(){
 
 
@@ -84,7 +88,7 @@ class StatisticsController {
 
 	}
 
-
+	//Fetch and show all Text Questions
 	def type3(){
 
 
@@ -100,15 +104,18 @@ class StatisticsController {
 			def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
 			for (a in allTextAnswers){
-				def textAnswer = a.answerValue
-				StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
-				listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
+				if (a.answerValue != null && a.answerValue != ""){
+					def textAnswer = a.answerValue
+					StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
+					listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
+				}
 			}
 			return [listWithDateQuestionAndText: listQDateAndText, startDate: params.startDate, endDate:params.endDate, whichQuestions: params.whichQuestions ]
 		}
 
 	}
 
+	// List and show all Grade + all Boolean
 	def type4(){
 
 
@@ -178,6 +185,7 @@ class StatisticsController {
 
 	}
 
+	//Fetch and show all Grade, Boolean and Text questions
 	def type5(){
 
 
@@ -255,12 +263,13 @@ class StatisticsController {
 			def allTextAnswers = SurveyAnswer.findAllByQuestionAndAnswerDateBetween(q, sd, ed)
 
 			for (a in allTextAnswers){
+				if (a.answerValue != null && a.answerValue != ""){
 				def textAnswer = a.answerValue
 				StringBuilder textDate = new StringBuilder(dateFormat.format(a.answerDate))
 				listQDateAndText << [textDate: textDate, question: questionText, text: textAnswer]
 			}
+			}
 		}
 		return [listWithQuestionCountAndProcentage: listQCP, listWithQuestionAvrageAndCount: listQACs, listWithDateQuestionAndText: listQDateAndText, startDate: params.startDate, endDate:params.endDate, whichQuestions: params.whichQuestions ]
 	}
-
 }

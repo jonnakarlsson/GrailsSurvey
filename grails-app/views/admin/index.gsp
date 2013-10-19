@@ -161,18 +161,6 @@
 			</tbody>
 		</table>
 	</div>
-
-	<nav id="knappar">
-		<ul>
-			<li><a href="http://localhost:8080/survey/survey/index">
-					SVARSENKÄT </a></li>
-			<li><a href="http://localhost:8080/survey/admin/index">
-					ADMINSIDA </a></li>
-			<li><a href="http://localhost:8080/survey/statistics/index">
-					STATISTIK </a></li>
-		</ul>
-	</nav>
-	</div>
 </body>
 
 </html>

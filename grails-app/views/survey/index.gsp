@@ -110,14 +110,6 @@
 
 		</g:form>
 	</div>
-
-	<nav id="knappar">
-		<ul>
-			<li><a href="index.html"> SVARSENKÄT </a></li>
-			<li><a href="admin.html"> ADMINSIDA </a></li>
-			<li><a href="statistik.html"> STATISTIK </a></li>
-		</ul>
-	</nav>
 </body>
 
 </html>
