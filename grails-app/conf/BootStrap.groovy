@@ -6,17 +6,17 @@ class BootStrap {
     def init = { servletContext ->
         println " Hej BootStrap"
 
-        new SurveyQuestion([questionId: 1, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 1, questionText: "Hur upplevde du bemötandet i restaurangen?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 2, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 0, questionText: "Hur upplevde du måsen?", enabled: false]).save(failOnError:true)
-        new SurveyQuestion([questionId: 3, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 2, questionText: "Hur upplevde du maten?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 4, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 3, questionText: "Hur upplevde du bemötandet i receptionen?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 5, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 4, questionText: "Hur upplevde du kvaliteten på rummen?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 6, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 5, questionText: "Hur upplevde du bemötandet under planeringen av er konferens?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 7, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 6, questionText: "Hur upplevde du konferenslokalerna och andra gemensamma utrymmen?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 8, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 7, questionText: "Hur upplevde du våra utomhusutrymmen?", enabled: true]).save(failOnError:true)
-        new SurveyQuestion([questionId: 9, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 8, questionText: "Vilket betyg ger du Djurönäset som helhet?", enabled: true]).save(failOnError:true)
-		new SurveyQuestion([questionId: 10, questionType : SurveyQuestion.TYPE_BOOLEAN, sortOrder: 1, questionText: "Rekommenderar du Djurönäset?", enabled: true]).save(failOnError:true)
-		new SurveyQuestion([questionId: 11, questionType : SurveyQuestion.TYPE_TEXT, sortOrder: 1, questionText: "Textmeddelande", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 1, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 1, questionText: "Hur var helhetsupplevelsen av din vistelse på Djurönäset", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 2, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 0, questionText: "Hur upplevde du receptionen?", enabled: false]).save(failOnError:true)
+        new SurveyQuestion([questionId: 3, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 2, questionText: "Hur upplevde du reception och annan service", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 4, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 3, questionText: "Hur upplevde du servicen och bemötandet i restauranten?", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 5, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 4, questionText: "Hur upplevde du maten?", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 6, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 5, questionText: "Hur upplevde du våra faciliteter?", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 7, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 6, questionText: "Hur upplevde du våra hotellrum?", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 8, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 7, questionText: "Hur upplevde du städningen?", enabled: true]).save(failOnError:true)
+        new SurveyQuestion([questionId: 9, questionType : SurveyQuestion.TYPE_GRADE, sortOrder: 8, questionText: "Vilket betyg ger du Djuränäset som helhet?", enabled: true]).save(failOnError:true)
+		new SurveyQuestion([questionId: 10, questionType : SurveyQuestion.TYPE_BOOLEAN, sortOrder: 1, questionText: "Är du nöjd med din vistelse på Djurönäset?", enabled: true]).save(failOnError:true)
+		new SurveyQuestion([questionId: 11, questionType : SurveyQuestion.TYPE_TEXT, sortOrder: 1, questionText: "Kommentarer", enabled: true]).save(failOnError:true)
 
 		def random = new Random()
 		
