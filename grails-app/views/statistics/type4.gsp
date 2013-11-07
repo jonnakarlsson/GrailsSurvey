@@ -58,7 +58,7 @@
 			<tbody>
 				<g:each in="${listWithQuestionCountAndProcentage}" var="map">
 					<tr>
-						<td>
+						<td class="QuestionText2">
 							${map.question}
 						</td>
 						<td>
