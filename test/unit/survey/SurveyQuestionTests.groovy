@@ -29,7 +29,8 @@ class SurveyQuestionTests {
 		q.questionText = "Hej"
 		assert q.toString() == "76: Hej"
 	}
-	void testParseAnswerEmpty(){
+
+	void testParseAnswerEmptyWhenQuestionTypeIsGrade(){
 		def q = new SurveyQuestion()
 		assert q.parseAnswer("")==""
 		q.questionType = SurveyQuestion.TYPE_GRADE
@@ -41,9 +42,43 @@ class SurveyQuestionTests {
 			// This is expected
 		}
 	}
-	void testParseAnswerNumber(){
+	
+	void testParseAnswerStringWhenQuestionTypeIsGrade(){
 		def q = new SurveyQuestion()
-		assert q.parseAnswer("1")== 1
+		assert q.parseAnswer("Nothing")=="Nothing"
+		q.questionType = SurveyQuestion.TYPE_GRADE
+		try {
+			assert q.parseAnswer("Nothing")== "Nothing"
+			fail "parseAnswer is expected to result in IllegalArgumentException. String with letters should not be allowed"
+		}
+		catch (IllegalArgumentException e){
+			// This is expected
+		}
 	}
-}
 
+	void testParseAnswerNumberWhenQuestionTypeIsGrade(){
+		def q = new SurveyQuestion()
+		assert q.parseAnswer("")==""
+		q.questionType = SurveyQuestion.TYPE_GRADE
+		assert q.parseAnswer("5")==5
+	}
+	
+
+	void testParseAnswerWhenQyestionTypeIsBoolean(){
+		def q = new SurveyQuestion()
+		q.questionType = SurveyQuestion.TYPE_BOOLEAN
+		assert q.parseAnswer("")==false
+		assert q.parseAnswer("false")==false
+		assert q.parseAnswer("SANT")==false
+		assert q.parseAnswer("1")==false
+		assert q.parseAnswer("true")==true
+	}
+	
+	void testParseAnswerWhenQyestionTypeIsString(){
+		def q = new SurveyQuestion()
+		q.questionType = SurveyQuestion.TYPE_TEXT
+		assert q.parseAnswer("0")=="0"
+		assert q.parseAnswer("True")=="True"
+		assert q.parseAnswer("")==""
+	}		
+}

@@ -5,10 +5,10 @@ import java.text.SimpleDateFormat
 
 class SurveyAnswer {
 
-	long transactionId          //id som Ã¤r detsamma fÃ¶r alla svar ifrÃ¥n ett formulÃ¤r.
-	Date answerDate              //datumet dÃ¥ svaret skapades av gÃ¤sten
-	String answerValue      //svaret
-	SurveyQuestion question     //frÃ¥gan som svaret tillhÃ¶r
+	long transactionId          //id som är detsamma får alla svar ifrån ett formulär.
+	Date answerDate              //datumet då svaret skapades av gästen
+	String answerValue      	//svaret
+	SurveyQuestion question     //frågan som svaret tillhör
 	String contact 				//kontaktpersonen 
 
 	static constraints = {
