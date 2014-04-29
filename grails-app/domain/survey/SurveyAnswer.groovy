@@ -23,8 +23,17 @@ class SurveyAnswer {
 	static mapping = { sort "answerDate" }
 	 
 	transient Object getAnswer(){
+		if (question != null && answerValue != null){
 		return question.parseAnswer(answerValue)
+		}
+		else if (answerValue == null){
+			throw new IllegalArgumentException("The object SurveyAnswer is missing an answerValue")
+		}
+		else {
+			throw new IllegalArgumentException("The object SurveyAnswer is missing the question property.")
+		}
 	}
+	
 
 	String toString() {
 		if (question != null && answerValue != null){
