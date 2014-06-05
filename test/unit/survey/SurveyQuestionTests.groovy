@@ -80,5 +80,22 @@ class SurveyQuestionTests {
 		assert q.parseAnswer("0")=="0"
 		assert q.parseAnswer("True")=="True"
 		assert q.parseAnswer("")==""
-	}		
+	}
+	
+	void testChangeSortOrder(){
+		def q = new SurveyQuestion()
+		q.sortOrder = 1
+		assert q.getSortOrder()==1
+		q.changeSortOrder(2)
+		assert q.getSortOrder()== 2
+	}
+	
+	void testChangeEnabled(){
+		def q = new SurveyQuestion()
+		q.enabled = true
+		assert q.getEnabled()== true
+		q.changeEnabled(false)
+		assert q.getEnabled()== false
+	} 
+			
 }
