@@ -9,12 +9,12 @@ class SurveyQuestion {
 	static final int TYPE_UNKNOWN = 0
 
 
-	int questionType 	    // Vilken typ av svar förväntas?
-	Date dateCreated		// Datumet då frågan skapades
-	String questionText		// Frågan skriven i text.
-	boolean enabled			// Om frågan är aktuell enable True
-	int sortOrder			// På vilken plats skall frågan skrivas ut? Sorteringsordning.
-	int questionId 			// id på frågan
+	int questionType 	    // Vilken typ av svar fÃ¶rvÃ¤ntas?
+	Date dateCreated		// Datumet dÃ¥ frÃ¥gan skapades
+	String questionText		// Frï¿½gan skriven i text.
+	boolean enabled			// Om frï¿½gan ï¿½r aktuell enable True
+	int sortOrder			// Pï¿½ vilken plats skall frï¿½gan skrivas ut? Sorteringsordning.
+	int questionId 			// id pï¿½ frï¿½gan
 
 	static constraints = {
 
